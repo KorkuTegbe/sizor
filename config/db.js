@@ -6,7 +6,7 @@ const MONGODB_ATLAS_URI = process.env.MONGODB_ATLAS_URI;
 
 exports.connectDB = async () => {
   try {
-    await mongoose.connect(LOCAL_DB, {
+    await mongoose.connect(MONGODB_ATLAS_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

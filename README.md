@@ -51,6 +51,5 @@ The challenge is to build a url shortener with the following requirements
 - more features to be added
 
 ## Author
-
-- Website - [Add your name here](https://www.your-site.com)
+- Justice Etorko-Gbeku
 - Twitter - [@KorkuTegbe](https://www.twitter.com/KorkuTegbe)

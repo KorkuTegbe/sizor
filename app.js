@@ -6,6 +6,7 @@ const helmet = require("helmet");
 
 const appError = require("./utils/appError");
 const logger = require("./utils/logger");
+const rateLimiter = require("./utils/limiter");
 const morganMiddleWare = require("./utils/morgan");
 const globalErrorHandler = require("./controllers/errorController");
 
@@ -23,6 +24,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morganMiddleWare);
+app.use(rateLimiter);
 
 app.use("/api/v1/short", urlRoute);
 app.use("/", redirectRoute);

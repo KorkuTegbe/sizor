@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
+const ejs = require("ejs");
+const path = require("path");
 
 const appError = require("./utils/appError");
 const logger = require("./utils/logger");
@@ -17,6 +19,13 @@ const authRoute = require("./routes/authRoute");
 const analyticsRoute = require("./routes/analyticsRoute");
 
 const app = express();
+
+// View engine setup
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// Static files
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(helmet());
 app.use(cors());
@@ -39,7 +48,8 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.status(200).json({ message: `Welcome to the scissor API` });
+  // res.status(200).json({ message: `Welcome to the scissor API` });
+  res.status(200).render("home");
 });
 
 // handle unknown request errs
